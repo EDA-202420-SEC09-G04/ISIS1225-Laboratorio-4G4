@@ -26,7 +26,7 @@
 
 import csv
 import os
-# TODO Importar la libreria correspondiente para el manejo de listas sencillamente enlazadas
+from DataStructures.List import single_linked_listas as lt
 
 data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/'
 
@@ -46,7 +46,7 @@ def new_logic():
                'tags': None,
                'book_tags': None}
     
-    catalog['books'] = # TODO Implementar la inicialización de la lista de libros
+    catalog['books'] = lt.new_list()
     catalog['authors']= lt.new_list()
     catalog['tags']=  lt.new_list()
     catalog['book_tags'] = lt.new_list()
@@ -135,8 +135,11 @@ def count_books_by_tag(catalog, tag):
     """
     Retorna el conteo de libros que tienen asociado el tag solicitado.
     """
-    # TODO Implementar la función de conteo de libros por tag
-
+    count = 0
+    for i in catalog["tags"]:
+        if i == tag:
+            count += 1
+    return count
 # Funciones para agregar informacion al catalogo
 
 def add_book(catalog, book):
@@ -251,8 +254,11 @@ def compare_tag_names(name, tag):
     return -1
 
 def compare_book_ids(id, book):
-# TODO Implementar la función de comparación por book id
-
+    if (id == book['id']):
+        return 0
+    elif (id > book['id']):
+        return 1
+    return -1
 
 # funciones para comparar elementos dentro de algoritmos de ordenamientos
 
